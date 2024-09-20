@@ -14,7 +14,7 @@
 
 erDiagram
     USER {
-        String username
+        String username PK
         String name
         String password
         USER_ROLE role
@@ -23,7 +23,7 @@ erDiagram
     }
 
     QUIZ {
-        String id
+        String id PK
         Date startDateTime
         Date endDateTime
         String description
@@ -37,11 +37,13 @@ erDiagram
     }
 
     QUIZ_QUESTION {
-
+        String quizId FK , PK
+        String questionId FK , PK
+        
     }
 
     QUESTION {
-        String id
+        String id PK
         String question
         String a
         String b
@@ -61,7 +63,7 @@ erDiagram
     }
 
     ANSWER_SHEET {
-        String id
+        String id PK
         Date submittedTime
         SUBMIT_TYPE submitType
         int successCount
@@ -71,6 +73,8 @@ erDiagram
     }
 
     ANSWER_SHEET_QUESTION {
+        String answerSheetId FK , PK
+        String questionId FK , PK
         String answer
         boolean isCorrect
 
@@ -121,4 +125,5 @@ ANSWER_SHEET_QUESTION }o--|| QUESTION : has
     
 
 ```
+
 
