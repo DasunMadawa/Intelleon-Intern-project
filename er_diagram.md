@@ -7,12 +7,6 @@ erDiagram
         string password
     }
 
-    CUSTOMER {
-        int id
-        string name
-        string email
-    }
-
     ORDER {
         int id
         date orderDate
@@ -31,7 +25,7 @@ erDiagram
         int quantity
     }
 
-    CUSTOMER ||--o{ ORDER : places
+    CANDIDATE ||--o{ ORDER : places
     ORDER ||--o{ ORDER_PRODUCT : contains
     PRODUCT ||--o{ ORDER_PRODUCT : includes
 
