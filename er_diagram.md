@@ -5,7 +5,7 @@ erDiagram
         String username PK
         String name
         String password
-        USER_ROLE role
+        enum role "USER , ADMIN"
         boolean isParticipated
 
     }
@@ -40,20 +40,20 @@ erDiagram
         String answer
         String type
         float totalAmount
-        QUESTION_TYPE question_type
+        enum question_type "MULTIPLE_ANSWERS , TRUE_FALSE , NORMAL"
         int noQuiz
         int success
         int fail
-        SEC section
-        QUESTION_LEVEL question_level
-        QUESTION_SECTION section
+        enum question_level "EASY , MEDIUM , OTHER"
+        enum section "TECHNICAL , CRITICAL , OTHER"
 
     }
 
     ANSWER_SHEET {
-        String id PK
+        String userId FK , PK
+        String quizId FK , PK
         Date submittedTime
-        SUBMIT_TYPE submitType
+        enum submitType "AUTO , MANUAL"
         int successCount
         int failCount
         int marks
@@ -68,41 +68,7 @@ erDiagram
 
     }
 
-    enum USER_ROLE {
-        String ADMIN
-        String CANDIDATE
-
-    }
-
-    enum QUESTION_TYPE {
-        String MULTIPLE_ANSWERS
-        String TRUE_FALSE
-        String NORMAL
-
-    }
     
-    enum QUESTION_LEVEL {
-        String EASY
-        String MEDIUM
-        String OTHER
-
-    }
-    
-    enum QUESTION_SECTION {
-        String TECHNICAL
-        String CRITICAL
-        String OTHER
-
-    }
-
-
-    enum SUBMIT_TYPE {
-        String AUTO
-        String MANUAL
-
-    }
-
-
 USER }o--o| QUIZ : join
 QUIZ ||--o{ QUIZ_QUESTION : has
 QUIZ_QUESTION }o--|| QUESTION : has
@@ -113,5 +79,3 @@ ANSWER_SHEET_QUESTION }o--|| QUESTION : has
     
 
 ```
-
-
